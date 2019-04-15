@@ -28,20 +28,324 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnElevado = new System.Windows.Forms.Button();
+            this.txtVisor = new System.Windows.Forms.TextBox();
+            this.txtResultado = new System.Windows.Forms.TextBox();
+            this.lblSequencias = new System.Windows.Forms.Label();
+            this.btnMenos = new System.Windows.Forms.Button();
+            this.btnDivisao = new System.Windows.Forms.Button();
+            this.btnMultiplicacao = new System.Windows.Forms.Button();
+            this.btn9 = new System.Windows.Forms.Button();
+            this.btn8 = new System.Windows.Forms.Button();
+            this.btnMais = new System.Windows.Forms.Button();
+            this.btn7 = new System.Windows.Forms.Button();
+            this.btn6 = new System.Windows.Forms.Button();
+            this.btn5 = new System.Windows.Forms.Button();
+            this.btnPonto = new System.Windows.Forms.Button();
+            this.btn4 = new System.Windows.Forms.Button();
+            this.btn3 = new System.Windows.Forms.Button();
+            this.btn2 = new System.Windows.Forms.Button();
+            this.btnFechaParenteses = new System.Windows.Forms.Button();
+            this.btn1 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnIgual = new System.Windows.Forms.Button();
+            this.btnAbreParenteses = new System.Windows.Forms.Button();
+            this.btn0 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnElevado
+            // 
+            this.btnElevado.Location = new System.Drawing.Point(2, 134);
+            this.btnElevado.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnElevado.Name = "btnElevado";
+            this.btnElevado.Size = new System.Drawing.Size(125, 61);
+            this.btnElevado.TabIndex = 8;
+            this.btnElevado.Text = "^";
+            this.btnElevado.UseVisualStyleBackColor = true;
+            // 
+            // txtVisor
+            // 
+            this.txtVisor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtVisor.Location = new System.Drawing.Point(2, 6);
+            this.txtVisor.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtVisor.Name = "txtVisor";
+            this.txtVisor.ReadOnly = true;
+            this.txtVisor.Size = new System.Drawing.Size(536, 30);
+            this.txtVisor.TabIndex = 12;
+            // 
+            // txtResultado
+            // 
+            this.txtResultado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResultado.Location = new System.Drawing.Point(2, 46);
+            this.txtResultado.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtResultado.Name = "txtResultado";
+            this.txtResultado.ReadOnly = true;
+            this.txtResultado.Size = new System.Drawing.Size(536, 30);
+            this.txtResultado.TabIndex = 13;
+            // 
+            // lblSequencias
+            // 
+            this.lblSequencias.AutoSize = true;
+            this.lblSequencias.Location = new System.Drawing.Point(16, 94);
+            this.lblSequencias.Name = "lblSequencias";
+            this.lblSequencias.Size = new System.Drawing.Size(189, 22);
+            this.lblSequencias.TabIndex = 14;
+            this.lblSequencias.Text = "Pósfixa: Filhas e Pilas";
+            // 
+            // btnMenos
+            // 
+            this.btnMenos.Location = new System.Drawing.Point(413, 134);
+            this.btnMenos.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnMenos.Name = "btnMenos";
+            this.btnMenos.Size = new System.Drawing.Size(125, 61);
+            this.btnMenos.TabIndex = 15;
+            this.btnMenos.Text = "-";
+            this.btnMenos.UseVisualStyleBackColor = true;
+            // 
+            // btnDivisao
+            // 
+            this.btnDivisao.Location = new System.Drawing.Point(139, 134);
+            this.btnDivisao.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnDivisao.Name = "btnDivisao";
+            this.btnDivisao.Size = new System.Drawing.Size(125, 61);
+            this.btnDivisao.TabIndex = 15;
+            this.btnDivisao.Text = "/";
+            this.btnDivisao.UseVisualStyleBackColor = true;
+            // 
+            // btnMultiplicacao
+            // 
+            this.btnMultiplicacao.Location = new System.Drawing.Point(276, 134);
+            this.btnMultiplicacao.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnMultiplicacao.Name = "btnMultiplicacao";
+            this.btnMultiplicacao.Size = new System.Drawing.Size(125, 61);
+            this.btnMultiplicacao.TabIndex = 16;
+            this.btnMultiplicacao.Text = "*";
+            this.btnMultiplicacao.UseVisualStyleBackColor = true;
+            // 
+            // btn9
+            // 
+            this.btn9.Location = new System.Drawing.Point(276, 205);
+            this.btn9.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn9.Name = "btn9";
+            this.btn9.Size = new System.Drawing.Size(125, 61);
+            this.btn9.TabIndex = 20;
+            this.btn9.Text = "9";
+            this.btn9.UseVisualStyleBackColor = true;
+            // 
+            // btn8
+            // 
+            this.btn8.Location = new System.Drawing.Point(139, 205);
+            this.btn8.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn8.Name = "btn8";
+            this.btn8.Size = new System.Drawing.Size(125, 61);
+            this.btn8.TabIndex = 18;
+            this.btn8.Text = "8";
+            this.btn8.UseVisualStyleBackColor = true;
+            // 
+            // btnMais
+            // 
+            this.btnMais.Location = new System.Drawing.Point(413, 205);
+            this.btnMais.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnMais.Name = "btnMais";
+            this.btnMais.Size = new System.Drawing.Size(125, 61);
+            this.btnMais.TabIndex = 19;
+            this.btnMais.Text = "+";
+            this.btnMais.UseVisualStyleBackColor = true;
+            // 
+            // btn7
+            // 
+            this.btn7.Location = new System.Drawing.Point(2, 205);
+            this.btn7.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn7.Name = "btn7";
+            this.btn7.Size = new System.Drawing.Size(125, 61);
+            this.btn7.TabIndex = 17;
+            this.btn7.Text = "7";
+            this.btn7.UseVisualStyleBackColor = true;
+            // 
+            // btn6
+            // 
+            this.btn6.Location = new System.Drawing.Point(276, 276);
+            this.btn6.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn6.Name = "btn6";
+            this.btn6.Size = new System.Drawing.Size(125, 61);
+            this.btn6.TabIndex = 24;
+            this.btn6.Text = "6";
+            this.btn6.UseVisualStyleBackColor = true;
+            // 
+            // btn5
+            // 
+            this.btn5.Location = new System.Drawing.Point(139, 276);
+            this.btn5.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn5.Name = "btn5";
+            this.btn5.Size = new System.Drawing.Size(125, 61);
+            this.btn5.TabIndex = 22;
+            this.btn5.Text = "5";
+            this.btn5.UseVisualStyleBackColor = true;
+            // 
+            // btnPonto
+            // 
+            this.btnPonto.Location = new System.Drawing.Point(413, 276);
+            this.btnPonto.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnPonto.Name = "btnPonto";
+            this.btnPonto.Size = new System.Drawing.Size(125, 61);
+            this.btnPonto.TabIndex = 23;
+            this.btnPonto.Text = ".";
+            this.btnPonto.UseVisualStyleBackColor = true;
+            // 
+            // btn4
+            // 
+            this.btn4.Location = new System.Drawing.Point(2, 276);
+            this.btn4.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn4.Name = "btn4";
+            this.btn4.Size = new System.Drawing.Size(125, 61);
+            this.btn4.TabIndex = 21;
+            this.btn4.Text = "4";
+            this.btn4.UseVisualStyleBackColor = true;
+            // 
+            // btn3
+            // 
+            this.btn3.Location = new System.Drawing.Point(276, 347);
+            this.btn3.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(125, 61);
+            this.btn3.TabIndex = 28;
+            this.btn3.Text = "3";
+            this.btn3.UseVisualStyleBackColor = true;
+            // 
+            // btn2
+            // 
+            this.btn2.Location = new System.Drawing.Point(139, 347);
+            this.btn2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(125, 61);
+            this.btn2.TabIndex = 26;
+            this.btn2.Text = "2";
+            this.btn2.UseVisualStyleBackColor = true;
+            // 
+            // btnFechaParenteses
+            // 
+            this.btnFechaParenteses.Location = new System.Drawing.Point(413, 347);
+            this.btnFechaParenteses.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnFechaParenteses.Name = "btnFechaParenteses";
+            this.btnFechaParenteses.Size = new System.Drawing.Size(125, 61);
+            this.btnFechaParenteses.TabIndex = 27;
+            this.btnFechaParenteses.Text = ")";
+            this.btnFechaParenteses.UseVisualStyleBackColor = true;
+            // 
+            // btn1
+            // 
+            this.btn1.Location = new System.Drawing.Point(2, 347);
+            this.btn1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(125, 61);
+            this.btn1.TabIndex = 25;
+            this.btn1.Text = "1";
+            this.btn1.UseVisualStyleBackColor = true;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(276, 418);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(125, 61);
+            this.btnClear.TabIndex = 32;
+            this.btnClear.Text = "c";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
+            // btnIgual
+            // 
+            this.btnIgual.Location = new System.Drawing.Point(139, 418);
+            this.btnIgual.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnIgual.Name = "btnIgual";
+            this.btnIgual.Size = new System.Drawing.Size(125, 61);
+            this.btnIgual.TabIndex = 30;
+            this.btnIgual.Text = "=";
+            this.btnIgual.UseVisualStyleBackColor = true;
+            // 
+            // btnAbreParenteses
+            // 
+            this.btnAbreParenteses.Location = new System.Drawing.Point(413, 418);
+            this.btnAbreParenteses.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnAbreParenteses.Name = "btnAbreParenteses";
+            this.btnAbreParenteses.Size = new System.Drawing.Size(125, 61);
+            this.btnAbreParenteses.TabIndex = 31;
+            this.btnAbreParenteses.Text = "(";
+            this.btnAbreParenteses.UseVisualStyleBackColor = true;
+            // 
+            // btn0
+            // 
+            this.btn0.Location = new System.Drawing.Point(2, 418);
+            this.btn0.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btn0.Name = "btn0";
+            this.btn0.Size = new System.Drawing.Size(125, 61);
+            this.btn0.TabIndex = 29;
+            this.btn0.Text = "0";
+            this.btn0.UseVisualStyleBackColor = true;
             // 
             // FrmCalculadora
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(539, 481);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnIgual);
+            this.Controls.Add(this.btnAbreParenteses);
+            this.Controls.Add(this.btn0);
+            this.Controls.Add(this.btn3);
+            this.Controls.Add(this.btn2);
+            this.Controls.Add(this.btnFechaParenteses);
+            this.Controls.Add(this.btn1);
+            this.Controls.Add(this.btn6);
+            this.Controls.Add(this.btn5);
+            this.Controls.Add(this.btnPonto);
+            this.Controls.Add(this.btn4);
+            this.Controls.Add(this.btn9);
+            this.Controls.Add(this.btn8);
+            this.Controls.Add(this.btnMais);
+            this.Controls.Add(this.btn7);
+            this.Controls.Add(this.btnMultiplicacao);
+            this.Controls.Add(this.btnDivisao);
+            this.Controls.Add(this.btnMenos);
+            this.Controls.Add(this.lblSequencias);
+            this.Controls.Add(this.txtResultado);
+            this.Controls.Add(this.txtVisor);
+            this.Controls.Add(this.btnElevado);
+            this.Font = new System.Drawing.Font("DejaVu Sans Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "FrmCalculadora";
             this.Text = "Calculadora";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnElevado;
+        private System.Windows.Forms.TextBox txtVisor;
+        private System.Windows.Forms.TextBox txtResultado;
+        private System.Windows.Forms.Label lblSequencias;
+        private System.Windows.Forms.Button btnMenos;
+        private System.Windows.Forms.Button btnDivisao;
+        private System.Windows.Forms.Button btnMultiplicacao;
+        private System.Windows.Forms.Button btn9;
+        private System.Windows.Forms.Button btn8;
+        private System.Windows.Forms.Button btnMais;
+        private System.Windows.Forms.Button btn7;
+        private System.Windows.Forms.Button btn6;
+        private System.Windows.Forms.Button btn5;
+        private System.Windows.Forms.Button btnPonto;
+        private System.Windows.Forms.Button btn4;
+        private System.Windows.Forms.Button btn3;
+        private System.Windows.Forms.Button btn2;
+        private System.Windows.Forms.Button btnFechaParenteses;
+        private System.Windows.Forms.Button btn1;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnIgual;
+        private System.Windows.Forms.Button btnAbreParenteses;
+        private System.Windows.Forms.Button btn0;
     }
 }
 
