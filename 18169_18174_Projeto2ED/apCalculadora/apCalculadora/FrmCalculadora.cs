@@ -14,7 +14,7 @@ namespace apCalculadora
     {
         private string ParaPosfixo(string infixa)
         {
-
+            
             return "";
         }
         private double CalcularPosfixo(string posfixo)
