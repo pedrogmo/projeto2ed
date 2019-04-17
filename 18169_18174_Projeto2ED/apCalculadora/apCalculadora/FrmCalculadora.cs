@@ -12,10 +12,52 @@ namespace apCalculadora
 {
     public partial class FrmCalculadora : Form
     {
+        private bool HaPrecedencia(char topo, char lido)
+        {
+            return false;
+        }
+        private bool EhOperador(char s)
+        {
+            return s == '(' || s == ')' || s == '+' || s == '-' || s == '*' || s == '/' || s == '^';
+        }
         private string ParaPosfixo(string infixa)
         {
-            
-            return "";
+            string ret = "";
+            char operadorPrecedencia;
+            PilhaLista<char> umaPilha = new PilhaLista<char>(); // Instancia e inicia a Pilha
+            for (int i = 0; i < infixa.Length; i++)
+            {
+                char simbolo = infixa[i];
+
+                if (!(EhOperador(simbolo)))
+                    ret += simbolo;
+
+                else // operador
+                {
+                   
+                    while (!umaPilha.EstaVazia() && (HaPrecedencia(umaPilha.OTopo(), simbolo)))
+                    {
+                        operadorPrecedencia = umaPilha.Desempilhar();
+
+                        if (operadorPrecedencia != '(')
+                            ret += operadorPrecedencia;
+                        else
+                            break;
+                    }
+                    if (simbolo != ')')
+                        umaPilha.Empilhar(simbolo);
+                    else // fará isso QUANDO o Pilha[TOPO] = '(' 
+                        operadorPrecedencia = umaPilha.Desempilhar();
+                }
+            }
+            while (!umaPilha.EstaVazia())//Descarrega a Pilha Para a Saída 
+            {
+                operadorPrecedencia = umaPilha.Desempilhar();
+                if (operadorPrecedencia != '(')
+                   ret += operadorPrecedencia;
+            }
+
+            return ret;
         }
         private double CalcularPosfixo(string posfixo)
         {
