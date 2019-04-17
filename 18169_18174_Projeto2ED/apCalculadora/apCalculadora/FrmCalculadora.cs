@@ -12,10 +12,6 @@ namespace apCalculadora
 {
     public partial class FrmCalculadora : Form
     {
-        private bool HaPrecedencia(char topo, char lido)
-        {
-            return false;
-        }
         private bool EhOperador(char s)
         {
             return s == '(' || s == ')' || s == '+' || s == '-' || s == '*' || s == '/' || s == '^';
@@ -35,7 +31,7 @@ namespace apCalculadora
                 else // operador
                 {
                    
-                    while (!umaPilha.EstaVazia() && (HaPrecedencia(umaPilha.OTopo(), simbolo)))
+                    while (!umaPilha.EstaVazia() && (Precedencia.HaPrecedencia(umaPilha.OTopo(), simbolo)))
                     {
                         operadorPrecedencia = umaPilha.Desempilhar();
 
@@ -96,4 +92,5 @@ namespace apCalculadora
             }
         }
     }
+ 
 }

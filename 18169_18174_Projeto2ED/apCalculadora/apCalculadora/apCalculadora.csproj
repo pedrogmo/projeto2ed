@@ -57,6 +57,7 @@
     <Compile Include="PilhaCheiaException.cs" />
     <Compile Include="PilhaLista.cs" />
     <Compile Include="PilhaVaziaException.cs" />
+    <Compile Include="Precedencia.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmCalculadora.resx">
