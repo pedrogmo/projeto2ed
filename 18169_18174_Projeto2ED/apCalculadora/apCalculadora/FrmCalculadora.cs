@@ -12,59 +12,12 @@ namespace apCalculadora
 {
     public partial class FrmCalculadora : Form
     {
-        private bool EhOperador(char s)
-        {
-            return s == '(' || s == ')' || s == '+' || s == '-' || s == '*' || s == '/' || s == '^';
-        }
-        private string ParaPosfixo(string infixa)
-        {
-            string ret = "";
-            char operadorPrecedencia;
-            PilhaLista<char> umaPilha = new PilhaLista<char>(); // Instancia e inicia a Pilha
-            for (int i = 0; i < infixa.Length; i++)
-            {
-                char simbolo = infixa[i];
+        Sequencia sequencia;
 
-                if (!(EhOperador(simbolo)))
-                    ret += simbolo;
-
-                else // operador
-                {
-                   
-                    while (!umaPilha.EstaVazia() && (Precedencia.HaPrecedencia(umaPilha.OTopo(), simbolo)))
-                    {
-                        operadorPrecedencia = umaPilha.Desempilhar();
-
-                        if (operadorPrecedencia != '(')
-                            ret += operadorPrecedencia;
-                        else
-                            break;
-                    }
-                    if (simbolo != ')')
-                        umaPilha.Empilhar(simbolo);
-                    else // fará isso QUANDO o Pilha[TOPO] = '(' 
-                        operadorPrecedencia = umaPilha.Desempilhar();
-                }
-            }
-            while (!umaPilha.EstaVazia())//Descarrega a Pilha Para a Saída 
-            {
-                operadorPrecedencia = umaPilha.Desempilhar();
-                if (operadorPrecedencia != '(')
-                   ret += operadorPrecedencia;
-            }
-
-            return ret;
-        }
-        private double CalcularPosfixo(string posfixo)
-        {
-
-            return 0;
-        }
         public FrmCalculadora()
         {
             InitializeComponent();
         }
-
 
         private void Tudo_Click(object sender, EventArgs e)
         {
@@ -82,9 +35,10 @@ namespace apCalculadora
         {
             try
             {
-                string posfixo = ParaPosfixo(txtVisor.Text);
+                sequencia = new Sequencia(txtVisor.Text);
+                string posfixo = sequencia.ParaPosfixo();
                 lblSequencias.Text = "Pósfixa:" + posfixo;
-                txtResultado.Text = CalcularPosfixo(posfixo).ToString();
+                txtResultado.Text = sequencia.CalcularPosfixo().ToString();
             }
             catch (Exception err)
             {

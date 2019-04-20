@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,21 +9,50 @@ namespace apCalculadora
 {
     class Precedencia
     {
-        private bool[,] matriz = new bool[7, 7];
+        private bool[,] matriz;
 
-        public Precedencia()
+        public Precedencia(string localArquivo)
         {
-            matriz[0, 0] = matriz[0, 1] = matriz[0, 2] = matriz[0, 3] = matriz[0, 4] = matriz[0, 5] = 
-            matriz[0, 1] = matriz[2, 0] = matriz[2, 1] = matriz[3,0] = matriz[3, 1] = matriz[4,0] = 
-            matriz[4,1] = matriz[4,2] = matriz[4,3] = matriz[5,0] = matriz[5,1] = matriz[5,2] = matriz[5,3] =
-            matriz[6,0] = matriz[6,1] = matriz[6,2] = matriz[6,3] = matriz[6,4] = matriz[6,5] = matriz[6,6] = false;
-            matriz[0,6] = matriz[1,1] = matriz[1,2] = matriz[1,3] = matriz[1,4] = matriz[1,5] = matriz[1,6] = 
-            matriz= true
+            matriz = new bool[7, 7];
+            StreamReader arq = new StreamReader(localArquivo);
+            int l = 0;
+            while (!arq.EndOfStream)
+            {
+                string linha = arq.ReadLine();
+                string[] campos = linha.Split(' ');
+                for (int c = 0; c < 7; c++)
+                    matriz[l, c] = campos[c] == "T";
+                l++;
+            }
         }
         public bool HaPrecedencia(char topo, char lido)
         {
-            
-        }
-        
+            int linha = -1, coluna = -1;
+            switch (topo)
+            {
+                case '(': linha = 0; break;
+                case '^': linha = 1; break;
+                case '*': linha = 2; break;
+                case '/': linha = 3; break;
+                case '+': linha = 4; break;
+                case '-': linha = 5; break;
+                case ')': linha = 6; break;
+            }
+            if (linha == -1)
+                throw new Exception("Caractere de topo inválido");
+            switch (lido)
+            {
+                case '(': coluna = 0; break;
+                case '^': coluna = 1; break;
+                case '*': coluna = 2; break;
+                case '/': coluna = 3; break;
+                case '+': coluna = 4; break;
+                case '-': coluna = 5; break;
+                case ')': coluna = 6; break;
+            }
+            if (coluna == -1)
+                throw new Exception("Caractere lido inválido");
+            return matriz[linha, coluna];
+        }        
     }
 }
