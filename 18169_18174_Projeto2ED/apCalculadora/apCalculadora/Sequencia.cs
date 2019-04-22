@@ -9,7 +9,7 @@ namespace apCalculadora
     class Sequencia
     {
         private string sequencia;
-        private Elemento[] valores;
+        //private Elemento[] valores;
         private Precedencia precedencia;
 
         public Sequencia(string infixa)
