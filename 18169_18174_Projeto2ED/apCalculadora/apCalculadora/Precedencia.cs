@@ -21,7 +21,7 @@ namespace apCalculadora
                 string linha = arq.ReadLine();
                 string[] campos = linha.Split(' ');
                 for (int c = 0; c < 7; c++)
-                    matriz[l, c] = campos[c] == "T";
+                    matriz[l, c] = campos[c] == "V";
                 l++;
             }
         }
