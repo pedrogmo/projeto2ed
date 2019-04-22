@@ -14,7 +14,7 @@ namespace apCalculadora
 
         public Sequencia(string infixa)
         {
-            precedencia = new Precedencia("precedencia.txt");
+            precedencia = new Precedencia("c://temp//precedencia.txt");
             GerarPosfixo(infixa);
         }
 
