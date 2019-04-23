@@ -13,7 +13,7 @@ namespace apCalculadora
 
         public Precedencia(string localArquivo)
         {
-            matriz = new bool[7, 7];
+            matriz = new bool[6, 7];
             StreamReader arq = new StreamReader(localArquivo);
             int l = 0;
             while (!arq.EndOfStream)
@@ -36,7 +36,6 @@ namespace apCalculadora
                 case '/': linha = 3; break;
                 case '+': linha = 4; break;
                 case '-': linha = 5; break;
-                case ')': linha = 6; break;
             }
             if (linha == -1)
                 throw new Exception("Caractere de topo inválido");
