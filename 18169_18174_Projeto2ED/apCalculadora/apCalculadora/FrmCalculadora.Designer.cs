@@ -336,6 +336,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "FrmCalculadora";
             this.Text = "Calculadora";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmCalculadora_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

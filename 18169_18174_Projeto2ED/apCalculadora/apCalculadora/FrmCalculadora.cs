@@ -21,7 +21,12 @@ namespace apCalculadora
 
         private void Tudo_Click(object sender, EventArgs e)
         {
-            txtVisor.Text += (sender as Button).Text;
+            AdicionarNoTxt((sender as Button).Text);
+        }
+
+        private void AdicionarNoTxt(string c)
+        {
+            txtVisor.Text += c;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -44,6 +49,12 @@ namespace apCalculadora
             {
                 MessageBox.Show(err.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void FrmCalculadora_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char pressionado = e.KeyChar;
+            AdicionarNoTxt(pressionado.ToString());
         }
     }
  
