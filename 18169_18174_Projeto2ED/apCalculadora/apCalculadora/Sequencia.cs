@@ -16,7 +16,7 @@ namespace apCalculadora
 
         public Sequencia(string infixa)
         {
-            precedencia = new Precedencia("c://temp//precedencia.txt");
+            precedencia = new Precedencia("c://Temp//precedencia.txt");
             valores = new double[max];
             GerarPosfixo(infixa);
         }
@@ -52,8 +52,6 @@ namespace apCalculadora
                     operadorPrecedencia = umaPilha.Desempilhar();
                     if (operadorPrecedencia != '(')
                         sequencia += operadorPrecedencia;
-                    else
-                        break;
                 }
                 if (simbolo != ')')
                     umaPilha.Empilhar(simbolo);
@@ -83,7 +81,38 @@ namespace apCalculadora
 
         public double CalcularPosfixo()
         {
-            return 0;
+            double resultado = 0;
+            PilhaLista<double> umaPilha = new PilhaLista<double>();
+            char simbolo;
+            for (int i = 0; i < sequencia.Length; i++)
+            {
+                simbolo = sequencia[i];
+                if (!EhOperador(simbolo))
+                    umaPilha.Empilhar(valores[(int)simbolo - valorCharA]);
+                else
+                {
+                    double operando2 = umaPilha.Desempilhar();
+                    double operando1 = umaPilha.Desempilhar();
+                    resultado = CalculaSubExpressao(operando1, simbolo, operando2);
+                    umaPilha.Empilhar(resultado);
+                }
+            }
+            resultado = umaPilha.Desempilhar();
+            return resultado;
+        }
+
+        private double CalculaSubExpressao(double op1, char s, double op2)
+        {
+            double valor = 0;
+            switch (s)
+            {
+                case '+': valor = op1 + op2;  break;
+                case '-': valor = op1 - op2; break;
+                case '*': valor = op1 * op2; break;
+                case '/': valor = op1 / op2; break;
+                case '^': valor = Math.Pow(op1,op2); break;
+            }
+            return valor;
         }
     }
 }
