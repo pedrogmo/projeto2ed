@@ -12,57 +12,56 @@ namespace apCalculadora
         private const int valorCharA = 65;
         private string sequencia;
         private double[] valores;
-        private int contValores;
         private Precedencia precedencia;
 
         public Sequencia(string infixa)
         {
             precedencia = new Precedencia("c://temp//precedencia.txt");
             valores = new double[max];
-            contValores = 0;
             GerarPosfixo(infixa);
         }
 
         private void GerarPosfixo(string infixa)
         {
+            int contValores = 0;
             char operadorPrecedencia;
             PilhaLista<char> umaPilha = new PilhaLista<char>(); // Instancia e inicia a Pilha
-            int i = 0;
-            bool acabou = false;
-            while (!acabou)
+            string numeroString = "";
+            for (int i = 0; i < infixa.Length; i++)
             {
                 char simbolo = infixa[i];
-                string numeroString = LerNumero(ref simbolo, infixa, ref i, infixa.Length);
-                AdicionarNumero(numeroString);
-                numeroString = "";                
-                if (i >= infixa.Length)
-                    acabou = true;
-                if (EhOperador(simbolo))
+                while (!(EhOperador(simbolo)) && i < infixa.Length)
                 {
-                    if (umaPilha.EstaVazia())
-                        umaPilha.Empilhar(simbolo);
-                    else
-                    {
-                        if (precedencia.HaPrecedencia(umaPilha.OTopo(), simbolo))
-                            operadorPrecedencia = umaPilha.Desempilhar();
-                        else
-                            umaPilha.Empilhar(simbolo);
-                    }
+                    numeroString += simbolo;
+                    i++;
+                    if (i < infixa.Length)
+                        simbolo = infixa[i];
                 }
-                else
+                if (numeroString != "")
                 {
-                    if (simbolo == ')')
-                    {
-                        if (!umaPilha.EstaVazia())
-                            operadorPrecedencia = umaPilha.Desempilhar();
-                    }
-                    else if (simbolo == '(')
-                    {
-
-                    }
+                    if (contValores >= max)
+                        throw new Exception("Número de valores excedeu o limite");
+                    sequencia += (char)(contValores + valorCharA);
+                    valores[contValores++] = double.Parse(numeroString);
+                    numeroString = "";
+                    if (i >= infixa.Length)
+                        break;
+                }
+                while (!umaPilha.EstaVazia() && (precedencia.HaPrecedencia(umaPilha.OTopo(), simbolo)))
+                {
+                    operadorPrecedencia = umaPilha.Desempilhar();
+                    if (operadorPrecedencia != '(')
+                        sequencia += operadorPrecedencia;
                     else
-                        throw new Exception("Símbolo inválido");
-                }                
+                        break;
+                }
+                if (simbolo != ')')
+                    umaPilha.Empilhar(simbolo);
+                else // fará isso QUANDO o Pilha[TOPO] = ')' 
+                {
+                    if (!umaPilha.EstaVazia())
+                        operadorPrecedencia = umaPilha.Desempilhar();
+                }
             }
             while (!umaPilha.EstaVazia())//Descarrega a Pilha Para a Saída 
             {
@@ -72,43 +71,14 @@ namespace apCalculadora
             }
         }
 
-        private string LerNumero(ref char simbolo, string infixa, ref int inicio, int fim)
-        {
-            string numeroString = "";
-            while (EhNumero(simbolo) && inicio < fim)
-            {
-                numeroString += simbolo;
-                inicio++;
-                if (inicio < fim)
-                    simbolo = infixa[inicio];
-            }
-            return numeroString;
-        }
-
-        private void AdicionarNumero(string numeroString)
-        {
-            if (numeroString != "")
-            {
-                if (contValores >= max)
-                    throw new Exception("Número de valores excedeu o limite");
-                sequencia += (char)(contValores + valorCharA);
-                valores[contValores++] = double.Parse(numeroString);
-            }
-        }
-
         public string ParaPosfixo()
         {
             return sequencia;
         }
 
-        private bool EhNumero(char s)
-        {
-            return !(s == '(' || s == ')' || s == '+' || s == '-' || s == '*' || s == '/' || s == '^');
-        }
-
         private bool EhOperador(char s)
         {
-            return (s == '+' || s == '-' || s == '*' || s == '/' || s == '^');
+            return s == '(' || s == ')' || s == '+' || s == '-' || s == '*' || s == '/' || s == '^';
         }
 
         public double CalcularPosfixo()
