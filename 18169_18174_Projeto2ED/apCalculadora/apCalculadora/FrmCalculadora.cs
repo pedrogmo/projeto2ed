@@ -21,10 +21,10 @@ namespace apCalculadora
 
         private void Tudo_Click(object sender, EventArgs e)
         {
-            AdicionarNoTxt((sender as Button).Text);
+            AdicionarNoTxt(Char.Parse((sender as Button).Text));
         }
 
-        private void AdicionarNoTxt(string c)
+        private void AdicionarNoTxt(char c)
         {
             txtVisor.Text += c;
         }
@@ -51,10 +51,18 @@ namespace apCalculadora
             }
         }
 
-        private void FrmCalculadora_KeyPress(object sender, KeyPressEventArgs e)
+        private void FrmCalculadora_KeyDown(object sender, KeyEventArgs e)
         {
-            char pressionado = e.KeyChar;
-            AdicionarNoTxt(pressionado.ToString());
+            char pressionado = char.Parse(((char)e.KeyCode).ToString().ToUpper());
+            if (pressionado == '0' || pressionado == '1' || pressionado == '2' || pressionado == '3' || pressionado == '4'
+                 || pressionado == '5' || pressionado == '6' || pressionado == '7' || pressionado == '8' || pressionado == '9'
+                  || pressionado == '+' || pressionado == '-' || pressionado == '*' || pressionado == '/' || pressionado == '^'
+                  || pressionado == ',')
+                AdicionarNoTxt(pressionado);
+            else if (pressionado == '=')
+                btnIgual.PerformClick();
+            else if (pressionado == 'C' || pressionado == (char)Keys.Escape)
+                btnClear.PerformClick();
         }
     }
  

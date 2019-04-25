@@ -45,7 +45,7 @@
             this.btn0 = new System.Windows.Forms.Button();
             this.btnAbreParenteses = new System.Windows.Forms.Button();
             this.btnFechaParenteses = new System.Windows.Forms.Button();
-            this.btnPonto = new System.Windows.Forms.Button();
+            this.btnVirgula = new System.Windows.Forms.Button();
             this.btnMais = new System.Windows.Forms.Button();
             this.btnMenos = new System.Windows.Forms.Button();
             this.btnMultiplicacao = new System.Windows.Forms.Button();
@@ -238,16 +238,16 @@
             this.btnFechaParenteses.UseVisualStyleBackColor = true;
             this.btnFechaParenteses.Click += new System.EventHandler(this.Tudo_Click);
             // 
-            // btnPonto
+            // btnVirgula
             // 
-            this.btnPonto.Location = new System.Drawing.Point(413, 276);
-            this.btnPonto.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnPonto.Name = "btnPonto";
-            this.btnPonto.Size = new System.Drawing.Size(125, 61);
-            this.btnPonto.TabIndex = 23;
-            this.btnPonto.Text = ".";
-            this.btnPonto.UseVisualStyleBackColor = true;
-            this.btnPonto.Click += new System.EventHandler(this.Tudo_Click);
+            this.btnVirgula.Location = new System.Drawing.Point(413, 276);
+            this.btnVirgula.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnVirgula.Name = "btnVirgula";
+            this.btnVirgula.Size = new System.Drawing.Size(125, 61);
+            this.btnVirgula.TabIndex = 23;
+            this.btnVirgula.Text = ",";
+            this.btnVirgula.UseVisualStyleBackColor = true;
+            this.btnVirgula.Click += new System.EventHandler(this.Tudo_Click);
             // 
             // btnMais
             // 
@@ -319,7 +319,7 @@
             this.Controls.Add(this.btn1);
             this.Controls.Add(this.btn6);
             this.Controls.Add(this.btn5);
-            this.Controls.Add(this.btnPonto);
+            this.Controls.Add(this.btnVirgula);
             this.Controls.Add(this.btn4);
             this.Controls.Add(this.btn9);
             this.Controls.Add(this.btn8);
@@ -333,10 +333,11 @@
             this.Controls.Add(this.txtVisor);
             this.Controls.Add(this.btnElevado);
             this.Font = new System.Drawing.Font("DejaVu Sans Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "FrmCalculadora";
             this.Text = "Calculadora";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmCalculadora_KeyPress);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCalculadora_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,7 +361,7 @@
         private System.Windows.Forms.Button btn0;
         private System.Windows.Forms.Button btnAbreParenteses;
         private System.Windows.Forms.Button btnFechaParenteses;
-        private System.Windows.Forms.Button btnPonto;
+        private System.Windows.Forms.Button btnVirgula;
         private System.Windows.Forms.Button btnMais;
         private System.Windows.Forms.Button btnMenos;
         private System.Windows.Forms.Button btnMultiplicacao;
