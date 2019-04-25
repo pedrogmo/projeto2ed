@@ -1,0 +1,5 @@
+* Verificação de sequência
+* Sinal unário -> -A + B
+* Limpar um caractere do textbox
+* Tratar evento KeyDown certo, para numpad também
+* Talvez: adicionar outras operações
