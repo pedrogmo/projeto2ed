@@ -2,4 +2,5 @@
 * Sinal unário -> -A + B
 * Limpar um caractere do textbox
 * Tratar evento KeyDown certo, para numpad também
+* Talvez: open file dialog para arquivo de precedência
 * Talvez: adicionar outras operações
