@@ -51,6 +51,7 @@
             this.btnMultiplicacao = new System.Windows.Forms.Button();
             this.btnDivisao = new System.Windows.Forms.Button();
             this.btnElevado = new System.Windows.Forms.Button();
+            this.btnBackspace = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtVisor
@@ -61,7 +62,7 @@
             this.txtVisor.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtVisor.Name = "txtVisor";
             this.txtVisor.ReadOnly = true;
-            this.txtVisor.Size = new System.Drawing.Size(536, 30);
+            this.txtVisor.Size = new System.Drawing.Size(543, 30);
             this.txtVisor.TabIndex = 12;
             // 
             // txtResultado
@@ -72,7 +73,7 @@
             this.txtResultado.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(536, 30);
+            this.txtResultado.Size = new System.Drawing.Size(543, 30);
             this.txtResultado.TabIndex = 13;
             // 
             // lblSequencias
@@ -304,11 +305,23 @@
             this.btnElevado.UseVisualStyleBackColor = true;
             this.btnElevado.Click += new System.EventHandler(this.Tudo_Click);
             // 
+            // btnBackspace
+            // 
+            this.btnBackspace.Location = new System.Drawing.Point(2, 489);
+            this.btnBackspace.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnBackspace.Name = "btnBackspace";
+            this.btnBackspace.Size = new System.Drawing.Size(125, 61);
+            this.btnBackspace.TabIndex = 33;
+            this.btnBackspace.Text = "Backspace";
+            this.btnBackspace.UseVisualStyleBackColor = true;
+            this.btnBackspace.Click += new System.EventHandler(this.btnBackspace_Click);
+            // 
             // FrmCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 481);
+            this.ClientSize = new System.Drawing.Size(546, 555);
+            this.Controls.Add(this.btnBackspace);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnIgual);
             this.Controls.Add(this.btnAbreParenteses);
@@ -337,7 +350,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "FrmCalculadora";
             this.Text = "Calculadora";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCalculadora_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmCalculadora_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,6 +380,7 @@
         private System.Windows.Forms.Button btnMultiplicacao;
         private System.Windows.Forms.Button btnDivisao;
         private System.Windows.Forms.Button btnElevado;
+        private System.Windows.Forms.Button btnBackspace;
     }
 }
 

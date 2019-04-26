@@ -10,18 +10,35 @@ namespace apCalculadora
     {
         private const int max = 26;
         private const int valorCharA = 65;
-        private string sequencia;
+
+        private string infixa;
+        private string posfixa;
         private double[] valores;
+        private double resultado;
         private Precedencia precedencia;
 
-        public Sequencia(string infixa)
+        public string Posfixo
         {
-            precedencia = new Precedencia("c://Temp//precedencia.txt");
-            valores = new double[max];
-            GerarPosfixo(infixa);
+            get=>posfixa;
         }
 
-        private void GerarPosfixo(string infixa)
+        public double Resultado
+        {
+            get => resultado;
+        }
+
+        public Sequencia(string i)
+        {
+            if (i == "")
+                throw new Exception("Sequência vazia");
+            infixa = i;
+            precedencia = new Precedencia();
+            valores = new double[max];
+            GerarPosfixo();
+            CalcularPosfixo();
+        }
+
+        private void GerarPosfixo()
         {
             int contValores = 0;
             char operadorPrecedencia;
@@ -41,7 +58,7 @@ namespace apCalculadora
                 {
                     if (contValores >= max)
                         throw new Exception("Número de valores excedeu o limite");
-                    sequencia += (char)(contValores + valorCharA);
+                    posfixa += (char)(contValores + valorCharA);
                     valores[contValores++] = double.Parse(numeroString);
                     numeroString = "";
                     if (i >= infixa.Length)
@@ -51,7 +68,7 @@ namespace apCalculadora
                 {
                     operadorPrecedencia = umaPilha.Desempilhar();
                     if (operadorPrecedencia != '(')
-                        sequencia += operadorPrecedencia;
+                        posfixa += operadorPrecedencia;
                 }
                 if (simbolo != ')')
                     umaPilha.Empilhar(simbolo);
@@ -65,28 +82,22 @@ namespace apCalculadora
             {
                 operadorPrecedencia = umaPilha.Desempilhar();
                 if (operadorPrecedencia != '(')
-                    sequencia += operadorPrecedencia;
+                    posfixa += operadorPrecedencia;
             }
-        }
-
-        public string ParaPosfixo()
-        {
-            return sequencia;
-        }
+        }        
 
         private bool EhOperador(char s)
         {
             return s == '(' || s == ')' || s == '+' || s == '-' || s == '*' || s == '/' || s == '^';
         }
 
-        public double CalcularPosfixo()
+        private void CalcularPosfixo()
         {
-            double resultado = 0;
             PilhaLista<double> umaPilha = new PilhaLista<double>();
             char simbolo;
-            for (int i = 0; i < sequencia.Length; i++)
+            for (int i = 0; i < posfixa.Length; i++)
             {
-                simbolo = sequencia[i];
+                simbolo = posfixa[i];
                 if (!EhOperador(simbolo))
                     umaPilha.Empilhar(valores[(int)simbolo - valorCharA]);
                 else
@@ -98,7 +109,6 @@ namespace apCalculadora
                 }
             }
             resultado = umaPilha.Desempilhar();
-            return resultado;
         }
 
         private double CalculaSubExpressao(double op1, char s, double op2)

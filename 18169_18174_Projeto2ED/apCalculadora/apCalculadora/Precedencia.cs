@@ -11,10 +11,10 @@ namespace apCalculadora
     {
         private bool[,] matriz;
 
-        public Precedencia(string localArquivo)
+        public Precedencia()
         {
             matriz = new bool[6, 7];
-            StreamReader arq = new StreamReader(localArquivo);
+            StreamReader arq = new StreamReader("c://Temp//precedencia.txt");
             int l = 0;
             while (!arq.EndOfStream)
             {
