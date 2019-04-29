@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,21 +9,22 @@ namespace apCalculadora
     class Precedencia
     {
         private bool[,] matriz;
+        private static string texto =   "FFFFFFT" +
+                                        "FFTTTTT" +
+                                        "FFTTTTT" +
+                                        "FFTTTTT" +
+                                        "FFFFTTT" +
+                                        "FFFFTTT";
 
         public Precedencia()
         {
             matriz = new bool[6, 7];
-            StreamReader arq = new StreamReader("c://Temp//precedencia.txt");
-            int l = 0;
-            while (!arq.EndOfStream)
-            {
-                string linha = arq.ReadLine();
-                string[] campos = linha.Split(' ');
+            int cont = 0;
+            for (int l = 0; l < 6; l++)
                 for (int c = 0; c < 7; c++)
-                    matriz[l, c] = campos[c] == "T";
-                l++;
-            }
+                    matriz[l, c] = texto[cont++] == 'T';
         }
+
         public bool HaPrecedencia(char topo, char lido)
         {
             int linha = -1, coluna = -1;

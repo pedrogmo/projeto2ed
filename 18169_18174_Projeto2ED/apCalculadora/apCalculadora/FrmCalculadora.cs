@@ -44,15 +44,18 @@ namespace apCalculadora
         {
             try
             {
-                sequencia = new Sequencia(txtVisor.Text);
-                string posfixo = sequencia.Posfixo;
-                lblSequencias.Text = "Pósfixa:" + posfixo;
-                txtResultado.Text = sequencia.Resultado.ToString();
-                edicaoPermitida = false;
+                if (edicaoPermitida)
+                {
+                    sequencia = new Sequencia(txtVisor.Text);
+                    string posfixo = sequencia.Posfixo;
+                    lblSequencias.Text = "Pósfixa:" + posfixo;
+                    txtResultado.Text = sequencia.Resultado.ToString();
+                    edicaoPermitida = false;
+                }
             }
-            catch (Exception err)
+            catch
             {
-                MessageBox.Show(err.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sequência inválida", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -65,19 +68,19 @@ namespace apCalculadora
                      || pressionado == '5' || pressionado == '6' || pressionado == '7' || pressionado == '8' || pressionado == '9'
                       || pressionado == '+' || pressionado == '-' || pressionado == '*' || pressionado == '/' || pressionado == '^'
                       || pressionado == ',' || pressionado == '(' || pressionado == ')')
-                    AdicionarNoTxt(pressionado);
-                else if (pressionado == '=')
-                    btnIgual.PerformClick();
-                else if (pressionado == (char)Keys.Back)
-                    btnBackspace.PerformClick();
+                    AdicionarNoTxt(pressionado);                
             }
             if (pressionado == 'C' || pressionado == (char)Keys.Escape)
                 btnClear.PerformClick();
+            else if (pressionado == '=')
+                btnIgual.PerformClick();
+            else if (pressionado == (char)Keys.Back)
+                btnBackspace.PerformClick();
         }
 
         private void btnBackspace_Click(object sender, EventArgs e)
         {
-            if (txtVisor.Text != "")
+            if (edicaoPermitida && txtVisor.Text != "")
                 txtVisor.Text = txtVisor.Text.Substring(0,txtVisor.TextLength - 1);
         }
     }
