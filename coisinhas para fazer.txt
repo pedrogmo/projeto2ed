@@ -1,4 +1,3 @@
 * Verificação de sequência
 * Sinal unário -> -A + B
-* Talvez: open file dialog para arquivo de precedência
 * Talvez: adicionar outras operações
