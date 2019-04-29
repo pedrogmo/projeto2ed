@@ -70,7 +70,7 @@ namespace apCalculadora
                       || pressionado == ',' || pressionado == '(' || pressionado == ')')
                     AdicionarNoTxt(pressionado);                
             }
-            if (pressionado == 'C' || pressionado == (char)Keys.Escape)
+            if (pressionado == 'c' || pressionado == (char)Keys.Escape)
                 btnClear.PerformClick();
             else if (pressionado == '=')
                 btnIgual.PerformClick();
