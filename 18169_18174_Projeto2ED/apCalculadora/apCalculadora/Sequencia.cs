@@ -9,7 +9,6 @@ namespace apCalculadora
     class Sequencia
     {
         private const int max = 26;
-        private const int valorCharA = 65;
 
         private string infixa;
         private string posfixa;
@@ -43,6 +42,8 @@ namespace apCalculadora
             int contValores = 0;
             char operadorPrecedencia;
             PilhaLista<char> umaPilha = new PilhaLista<char>(); // Instancia e inicia a Pilha
+            bool sinalNegativo = false;
+            bool numeroAntes = false;
             string numeroString = "";
             for (int i = 0; i < infixa.Length; i++)
             {
@@ -53,30 +54,41 @@ namespace apCalculadora
                     i++;
                     if (i < infixa.Length)
                         simbolo = infixa[i];
+                    numeroAntes = true;
                 }
                 if (numeroString != "")
                 {
                     if (contValores >= max)
                         throw new Exception("Número de valores excedeu o limite");
-                    posfixa += (char)(contValores + valorCharA);
-                    valores[contValores++] = double.Parse(numeroString);
+                    posfixa += (char)(contValores + 'A');
+                    if (sinalNegativo)
+                        valores[contValores++] = double.Parse(numeroString) * -1;
+                    else
+                        valores[contValores++] = double.Parse(numeroString);
+                    sinalNegativo = false;
                     numeroString = "";
                     if (i >= infixa.Length)
                         break;
                 }
-                while (!umaPilha.EstaVazia() && (precedencia.HaPrecedencia(umaPilha.OTopo(), simbolo)))
+                if (numeroAntes)
                 {
-                    operadorPrecedencia = umaPilha.Desempilhar();
-                    if (operadorPrecedencia != '(')
-                        posfixa += operadorPrecedencia;
+                    while (!umaPilha.EstaVazia() && (precedencia.HaPrecedencia(umaPilha.OTopo(), simbolo)))
+                    {
+                        operadorPrecedencia = umaPilha.Desempilhar();
+                        if (operadorPrecedencia != '(')
+                            posfixa += operadorPrecedencia;
+                    }
+                    if (simbolo != ')')
+                        umaPilha.Empilhar(simbolo);
                 }
-                if (simbolo != ')')
-                    umaPilha.Empilhar(simbolo);
+                else if (simbolo=='-')
+                    sinalNegativo = true;
                 else // fará isso QUANDO o Pilha[TOPO] = ')' 
                 {
                     if (!umaPilha.EstaVazia())
                         operadorPrecedencia = umaPilha.Desempilhar();
                 }
+                numeroAntes = false;
             }
             while (!umaPilha.EstaVazia())//Descarrega a Pilha Para a Saída 
             {
@@ -99,7 +111,7 @@ namespace apCalculadora
             {
                 simbolo = posfixa[i];
                 if (!EhOperador(simbolo))
-                    umaPilha.Empilhar(valores[(int)simbolo - valorCharA]);
+                    umaPilha.Empilhar(valores[(int)simbolo - 'A']);
                 else
                 {
                     double operando2 = umaPilha.Desempilhar();

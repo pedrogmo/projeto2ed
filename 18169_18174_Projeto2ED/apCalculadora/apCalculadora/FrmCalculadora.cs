@@ -21,6 +21,14 @@ namespace apCalculadora
             edicaoPermitida = true;
         }
 
+        private void FrmCalculadora_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Digite sua sequência pelo teclado ou clique nos botões. Para calculá-la, clique no"+
+                " botão '=' ou aperte a tecla '=' no teclado. Para criar outra sequência, você deve limpar a sequência" +
+                " anterior. Atenção: NÃO inclua parênteses em volta de números negativos, isso não é preciso!"
+                , "Instruções", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void Tudo_Click(object sender, EventArgs e)
         {
             if (edicaoPermitida)
@@ -82,7 +90,7 @@ namespace apCalculadora
         {
             if (edicaoPermitida && txtVisor.Text != "")
                 txtVisor.Text = txtVisor.Text.Substring(0,txtVisor.TextLength - 1);
-        }
+        }        
     }
  
 }
