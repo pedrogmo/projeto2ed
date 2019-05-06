@@ -6,5 +6,5 @@ public interface IStack<Dado> where Dado : IComparable<Dado>
     Dado Desempilhar();
     Dado OTopo();
     bool EstaVazia();
-    int Tamanho();
+    int Tamanho { get; }
 }

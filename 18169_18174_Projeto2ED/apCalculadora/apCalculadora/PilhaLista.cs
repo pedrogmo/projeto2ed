@@ -11,9 +11,9 @@ public class PilhaLista<Dado> : IStack<Dado> where Dado:IComparable<Dado>
         tamanho = 0;
     }
 
-    public int Tamanho()
+    public int Tamanho
     {
-        return tamanho;
+        get=>tamanho;
     }
 
     public bool EstaVazia()
