@@ -44,6 +44,7 @@ namespace apCalculadora
             PilhaLista<char> umaPilha = new PilhaLista<char>(); // Instancia e inicia a Pilha
             bool sinalNegativo = false;
             bool numeroAntes = false;
+            bool parentesesAntes = false;
             string numeroString = "";
             for (int i = 0; i < infixa.Length; i++)
             {
@@ -53,11 +54,11 @@ namespace apCalculadora
                     numeroString += simbolo;
                     i++;
                     if (i < infixa.Length)
-                        simbolo = infixa[i];
-                    numeroAntes = true;
+                        simbolo = infixa[i];                    
                 }
                 if (numeroString != "")
                 {
+                    numeroAntes = true;
                     if (contValores >= max)
                         throw new Exception("Número de valores excedeu o limite");
                     posfixa += (char)(contValores + 'A');
@@ -70,7 +71,7 @@ namespace apCalculadora
                     if (i >= infixa.Length)
                         break;
                 }
-                if (numeroAntes)
+                if (numeroAntes || EhParenteses(simbolo) || parentesesAntes)
                 {
                     while (!umaPilha.EstaVazia() && (precedencia.HaPrecedencia(umaPilha.OTopo(), simbolo)))
                     {
@@ -80,15 +81,14 @@ namespace apCalculadora
                     }
                     if (simbolo != ')')
                         umaPilha.Empilhar(simbolo);
+                    else // fará isso QUANDO o Pilha[TOPO] = ')' 
+                        if (!umaPilha.EstaVazia())
+                            operadorPrecedencia = umaPilha.Desempilhar();
                 }
                 else if (simbolo=='-')
-                    sinalNegativo = true;
-                else // fará isso QUANDO o Pilha[TOPO] = ')' 
-                {
-                    if (!umaPilha.EstaVazia())
-                        operadorPrecedencia = umaPilha.Desempilhar();
-                }
+                    sinalNegativo = true;                
                 numeroAntes = false;
+                parentesesAntes = EhParenteses(simbolo);
             }
             while (!umaPilha.EstaVazia())//Descarrega a Pilha Para a Saída 
             {
@@ -96,7 +96,12 @@ namespace apCalculadora
                 if (operadorPrecedencia != '(')
                     posfixa += operadorPrecedencia;
             }
-        }        
+        }
+        
+        private bool EhParenteses(char s)
+        {
+            return s == '(' || s == ')';
+        }
 
         private bool EhOperador(char s)
         {
