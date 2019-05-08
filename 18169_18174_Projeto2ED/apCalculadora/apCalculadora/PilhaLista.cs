@@ -1,5 +1,8 @@
 ﻿using System;
 
+//Pedro Gomes Moreira (18174)
+//Samuel Gomes de Lima Dias (18169)
+
 public class PilhaLista<Dado> : IStack<Dado> where Dado:IComparable<Dado>
 {
     private NoLista<Dado> topo;

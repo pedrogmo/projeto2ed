@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Pedro Gomes Moreira (18174)
+//Samuel Gomes de Lima Dias (18169)
+
 namespace apCalculadora
 {
     static class Program

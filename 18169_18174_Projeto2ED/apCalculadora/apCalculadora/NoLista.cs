@@ -1,5 +1,8 @@
 ﻿using System;
 
+//Pedro Gomes Moreira (18174)
+//Samuel Gomes de Lima Dias (18169)
+
 public class NoLista<Dado> where Dado : IComparable<Dado> //interface que obriga a implementação de CompareTo(Dado) na classe
 {
     //object info; 

@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Pedro Gomes Moreira (18174)
+//Samuel Gomes de Lima Dias (18169)
+
 namespace apCalculadora
 {
     public partial class FrmCalculadora : Form
     {
+        //objeto de sequência que será usado para calcular
         Sequencia sequencia;
+        //boolean de controle de habilitação da edição do textbox
         bool edicaoPermitida;
 
         public FrmCalculadora()
