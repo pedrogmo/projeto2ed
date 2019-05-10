@@ -15,12 +15,13 @@ namespace apCalculadora
         //verificar a precedência do topo de uma pilha (linha) em relação
         //a um operador lido (coluna)
 
-        private static string texto =   "FFFFFFT" +
+        private static string texto =   "FFFFFFF" +
                                         "FFTTTTT" +
                                         "FFTTTTT" +
                                         "FFTTTTT" +
                                         "FFFFTTT" +
-                                        "FFFFTTT";
+                                        "FFFFTTT" +
+                                        "FFFFFFF" ;
         //essa string foi copiada da apostila, com uma única alteração:
         //o elevado topo não tem precedência sobre o elevado lido
         //Exemplo: 2^4^2 = 2^16
@@ -51,6 +52,7 @@ namespace apCalculadora
                 case '/': linha = 3; break;
                 case '+': linha = 4; break;
                 case '-': linha = 5; break;
+                case ')': linha = 6; break;
             }
             if (linha == -1) //se a linha permaneceu com o valor -1, significa que seu valor
             //não foi trocado no switch e, portanto, o caractere é inválido
