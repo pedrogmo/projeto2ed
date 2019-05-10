@@ -32,7 +32,8 @@ namespace apCalculadora
             //no evento Load do formulário, é exibida uma mensagem de instrução para o usuário
             MessageBox.Show("Digite sua sequência pelo teclado ou clique nos botões. Para calculá-la, clique no"+
                 " botão '=' ou aperte a tecla '=' no teclado. Para criar outra sequência, você deve limpar a sequência" +
-                " anterior. Atenção: NÃO inclua parênteses em volta de números negativos, isso não é preciso!"
+                " anterior. Para inverter o sinal de números dentro do parênteses use -1*( Ex:\"-1*(5-6)\"." +
+                "Atenção: NÃO inclua parênteses em volta de números negativos, isso não é preciso!"
                 , "Instruções", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
